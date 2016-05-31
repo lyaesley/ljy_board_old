@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="add" parameterType="User">
-		insert into users (num, id, password, name, register) values(#{num}, #{id}, #{password}, #{name}, #{register})
+		insert into users (id, password, name, register) values(#{id}, #{password}, #{name}, #{register})
 	</insert>
 	
 	<delete id="delete" parameterType="int">
