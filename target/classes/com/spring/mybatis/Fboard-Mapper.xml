@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="Fboard">
+
+	<select id="list" resultType="Fboard">
+		select * from fboard order by num
+	</select>
+	
+	<insert id="add" parameterType="Fboard">
+		insert into fboard (num, title, id, password, register, recom, hit, content) 
+		values(#{num}, #{title}, #{id}, #{password}, #{register}, #{recom}, #{hit}, #{content})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from fboard where num = #{num}
+	</delete>	
+	
+	<select id="get" parameterType="int" resultType="Fboard">
+		select * from fboard where num = #{num}
+ 	</select>
+ 	
+	<update id="update" parameterType="Fboard">
+		update fboard set title = #{title}, content = #{content} where num = #{num}
+	</update>
+
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="User">
+
+	<select id="list" resultType="User">
+		select * from users order by num
+	</select>
+	
+	<insert id="add" parameterType="User">
+		insert into users (num, id, password, name, register) values(#{num}, #{id}, #{password}, #{name}, #{register})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from users where num = #{num}
+	</delete>	
+	
+	<select id="get" parameterType="int" resultType="User">
+		select * from users where num = #{num}
+ 	</select>
+ 	
+	<update id="update" parameterType="User">
+		update users set id = #{id}, name = #{name}, password = #{password}, register = #{register} where num = #{num}
+	</update>
+	
+	<select id="selectLoginUser" parameterType="string" resultType="User">
+     select * from users where id=#{id} and password=#{password}
+    </select>
+</mapper>
