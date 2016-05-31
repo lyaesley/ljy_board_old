@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	테스트
 	<a href="<c:url value='/user/addForm'/>">추가</a>
 	<table border ="1">
 	<tr>
