@@ -14,7 +14,7 @@
 	xmlns:lang="http://www.springframework.org/schema/lang" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util">
 	
-	<context:property-placeholder location="classpath*:/**/*.properties" />
+	<context:property-placeholder location="classpath*:/**/jdbcOrcl.properties" />
 
 	<context:component-scan base-package="com.spring">
 		<context:exclude-filter expression="org.springframework.stereotype.Controller"
@@ -22,10 +22,10 @@
 	</context:component-scan>
 	
 	<bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
-		<property name="driver" value="${jdbcP.driver}"/>
-		<property name="url" value="${jdbcP.url}"/>
-		<property name="username" value="${jdbcP.username}"/>
-		<property name="password" value="${jdbcP.password}"/>
+		<property name="driver" value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
 	</bean>	
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
