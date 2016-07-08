@@ -3,6 +3,7 @@ package com.spring.user;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,9 +24,12 @@ public class UserController {
 
 	@Autowired UserService userService;
 	
+	Logger log = Logger.getLogger(this.getClass());
+	
 	@RequestMapping("/list")
 	public void list (Model model){
 		model.addAttribute("list", userService.list());
+		log.debug("인터셉터 테스트");
 	}
 	
 	@RequestMapping("/addForm")

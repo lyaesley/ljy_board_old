@@ -14,7 +14,7 @@
 	xmlns:lang="http://www.springframework.org/schema/lang" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util">
 	
-	<context:property-placeholder location="classpath*:/**/jdbcOrcl.properties" />
+	<context:property-placeholder location="classpath*:/**/jdbcPost.properties" />
 
 	<context:component-scan base-package="com.spring">
 		<context:exclude-filter expression="org.springframework.stereotype.Controller"
