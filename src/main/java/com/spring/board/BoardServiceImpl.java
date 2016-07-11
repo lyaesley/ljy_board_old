@@ -1,4 +1,4 @@
-package com.spring.fboard;
+package com.spring.board;
 
 import java.util.Date;
 import java.util.List;
@@ -7,33 +7,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spring.domain.Fboard;
+import com.spring.domain.Board;
 
 @Service
 @Transactional
-public class FboardServiceImpl implements FboardService{
+public class BoardServiceImpl implements BoardService{
 
-	@Autowired FboardDao dao;
+	@Autowired BoardDao dao;
 
 	@Override
-	public void add(Fboard fboard) {
-		fboard.setRegister(new Date());
-		dao.add(fboard);		
+	public void add(Board board) {
+		board.setReg_dtm(new Date());
+		dao.add(board);		
 	}
 
 	@Override
-	public void update(Fboard fboard) {
-		fboard.setRegister(new Date());
-		dao.update(fboard);
+	public void update(Board board) {
+		board.setReg_dtm(new Date());
+		dao.update(board);
 	}
 
 	@Override
-	public Fboard get(int num) {
+	public Board get(int num) {
 		return dao.get(num);
 	}
 
 	@Override
-	public List<Fboard> list() {
+	public List<Board> list() {
 		return dao.list();
 	}
 

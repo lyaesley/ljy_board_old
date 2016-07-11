@@ -6,6 +6,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
  	<typeAliases>
 		<typeAlias type="com.spring.domain.User" alias="User"/>
-		<typeAlias type="com.spring.domain.Fboard" alias="Fboard"/>
+		<typeAlias type="com.spring.domain.Board" alias="Board"/>
 	</typeAliases>
 </configuration>

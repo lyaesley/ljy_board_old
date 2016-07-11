@@ -12,8 +12,6 @@ import com.spring.domain.User;
 
 @Repository
 public class UserDaoMybatis implements UserDao{
-	
-
 	@Autowired SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
