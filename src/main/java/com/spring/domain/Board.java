@@ -10,7 +10,7 @@ public class Board {
 	String contents;
 	int hit_cnt;
 	String del_gb;
-	Date reg_dtm;
+	String reg_dtm;
 	String reg_id;
 	
 	public int getIdx() {
@@ -49,10 +49,10 @@ public class Board {
 	public void setDel_gb(String del_gb) {
 		this.del_gb = del_gb;
 	}
-	public Date getReg_dtm() {
+	public String getReg_dtm() {
 		return reg_dtm;
 	}
-	public void setReg_dtm(Date reg_dtm) {
+	public void setReg_dtm(String reg_dtm) {
 		this.reg_dtm = reg_dtm;
 	}
 	public String getReg_id() {

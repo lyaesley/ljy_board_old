@@ -14,7 +14,13 @@
 		<context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
 	</context:component-scan>
 	
-	 <mvc:interceptors>
+	<mvc:annotation-driven>
+        <mvc:argument-resolvers>
+            <beans:bean class="com.spring.resolver.CustomMapArgumentResolver"></beans:bean>       
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
+    
+	<mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <beans:bean id="loggerInterceptor" class="com.spring.logger.LoggerInterceptor"></beans:bean>

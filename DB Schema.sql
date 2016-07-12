@@ -1,3 +1,4 @@
+----------------------------------------게시판-----------------------------------------
 CREATE TABLE BOARD
 (
 	IDX serial NOT NULL,
@@ -18,3 +19,23 @@ COMMENT ON COLUMN BOARD.HIT_CNT IS '조회수';
 COMMENT ON COLUMN BOARD.DEL_GB IS '삭제구분';
 COMMENT ON COLUMN BOARD.REG_DTM IS '생성일자';
 COMMENT ON COLUMN BOARD.REG_ID IS '생성자 ID';
+
+--insert
+INSERT INTO BOARD
+(
+    TITLE, 
+    CONTENTS, 
+    HIT_CNT, 
+    DEL_GB, 
+    REG_ID
+)
+VALUES
+(
+    '제목', 
+    '내용', 
+    0, 
+    'N', 
+    'Admin'
+);
+
+---------------------------------------------------------------------------------------

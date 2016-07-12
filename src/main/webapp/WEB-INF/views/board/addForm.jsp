@@ -9,8 +9,8 @@
 <title>Add Board</title>
 </head>
 <body>
-	<a href="<c:url value='/fboard/list'/>">List</a>
-	<form:form commandName="fboard" action="/fboard" method="POST">
+	<a href="<c:url value='/board/list'/>">List</a>
+	<form:form commandName="board" action="/board" method="POST">
 		<label>제목</label>
 		<form:input path="title"/>
 		<label>아이디</label>

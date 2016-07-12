@@ -1,5 +1,8 @@
 package com.spring.board;
 
+import java.util.Iterator;
+import java.util.Map.Entry;
+
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -12,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.common.CommandMap;
 import com.spring.domain.Board;
 import com.spring.logger.LoggerInterceptor;
 
@@ -67,4 +72,26 @@ public class BoardController {
 		status.setComplete();
 		return "redirect:/board/list";
 	}
+	
+	@RequestMapping(value="/test")
+	public ModelAndView testMapArgumentResolver(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("");
+	     
+	    if(commandMap.isEmpty() == false){
+	        Iterator<Entry<String,Object>> iterator = commandMap.getMap().entrySet().iterator();
+	        Entry<String,Object> entry = null;
+	        while(iterator.hasNext()){
+	            entry = iterator.next();
+	            log.debug("key : "+entry.getKey()+", value : "+entry.getValue());
+	        }
+	    }
+	    return mv;
+	}
+	@RequestMapping(value="/openBoardWrite")
+	public ModelAndView openBoardWrite(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("/board/write");
+	     
+	    return mv;
+	}
+	
 }

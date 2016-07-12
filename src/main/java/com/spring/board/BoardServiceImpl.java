@@ -1,5 +1,6 @@
 package com.spring.board;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -14,16 +15,17 @@ import com.spring.domain.Board;
 public class BoardServiceImpl implements BoardService{
 
 	@Autowired BoardDao dao;
-
+	
 	@Override
 	public void add(Board board) {
-		board.setReg_dtm(new Date());
+		board.setReg_dtm(getDateNow());
 		dao.add(board);		
 	}
 
 	@Override
 	public void update(Board board) {
-		board.setReg_dtm(new Date());
+		
+		board.setReg_dtm(getDateNow());
 		dao.update(board);
 	}
 
@@ -42,4 +44,11 @@ public class BoardServiceImpl implements BoardService{
 		dao.delete(num);
 	}
 	
+	private String getDateNow(){
+		Date from = new Date();
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String now = transFormat.format(from);
+		return now;
+		
+	}
 }

@@ -8,8 +8,8 @@
 <title>Update Board</title>
 </head>
 <body>
-<a href="<c:url value='/fboard/list'/>">목록</a>
-<form:form commandName="fboard" action="/fboard/update"  method="POST">	
+<a href="<c:url value='/board/list'/>">목록</a>
+<form:form commandName="board" action="/board/update"  method="POST">	
     <p>
         <label>제목</label>
         <form:input path="title" size="50"/><br>

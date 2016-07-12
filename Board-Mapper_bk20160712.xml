@@ -6,18 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="board">
 
 	<select id="list" resultType="board">
-		SELECT
-			idx,
-			title,
-			hit_cnt,
-			reg_dtm
-		FROM
-			board
-		WHERE
-			del_gb='N'
-		ORDER BY IDX DESC
+		select * from board order by num
 	</select>
-<!--  
+	
 	<insert id="add" parameterType="board">
 		insert into board (num, title, id, password, register, recom, hit, content) 
 		values(#{num}, #{title}, #{id}, #{password}, #{register}, #{recom}, #{hit}, #{content})
@@ -34,5 +25,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="update" parameterType="board">
 		update board set title = #{title}, content = #{content} where num = #{num}
 	</update>
--->
+
 </mapper>

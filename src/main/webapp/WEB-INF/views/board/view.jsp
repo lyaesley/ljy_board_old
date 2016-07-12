@@ -5,24 +5,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Board ${fboard.title }</title>
+<title>Board ${board.title }</title>
 </head>
 <body>
 	<table>
 	<tr>
-		<th>제목: </th> <td> ${fboard.title }</td>
+		<th>제목: </th> <td> ${board.title }</td>
 	</tr>
 	<tr>
-		<th>작성자: </th><td>${fboard.id }</td>
-		<th>작성일: </th><td>${fboard.register }</td>
-		<th>조회: </th><td>${fboard.hit }</td>
-		<th>추천: </th><td>${fboard.recom }</td>
+		<th>작성자: </th><td>${board.id }</td>
+		<th>작성일: </th><td>${board.register }</td>
+		<th>조회: </th><td>${board.hit }</td>
+		<th>추천: </th><td>${board.recom }</td>
 	</tr>
 	</table>
 		<div>
-		${fboard.content }
+		${board.content }
 		</div>
-<a href="/fboard/update/${fboard.num}">수정</a>
-<a href="/fboard/delete/${fboard.num}">삭제</a>
+<a href="/board/update/${board.num}">수정</a>
+<a href="/board/delete/${board.num}">삭제</a>
 </body>
 </html>
