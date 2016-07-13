@@ -18,6 +18,11 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter{
 		if(log.isDebugEnabled()){
 			log.debug("============================== START =================================");
 			log.debug(" Request URI \t:   " + request.getRequestURI());
+			
+			String reqUrl = request.getRequestURI().toString();
+			if(reqUrl.equals("/resources/**")){
+				return false;
+			}
 		}
 		return super.preHandle(request, response, handler);
 	}

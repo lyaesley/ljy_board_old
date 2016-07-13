@@ -1,18 +1,28 @@
 package com.spring.board;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.domain.Board;
+import com.spring.logger.LoggerInterceptor;
 
 @Repository
 public class BoardDaoMybatis implements BoardDao{
+	protected Logger log = Logger.getLogger(LoggerInterceptor.class.getName());
 	
 	@Autowired SqlSessionTemplate sqlSessionTemplate;
-
+	
+	protected void printQueryId(String queryId) {
+		if(log.isDebugEnabled()){
+			log.debug("\t QueryId  \t:  " + queryId);
+		}
+	}
+	
 	@Override
 	public void add(Board board) {
 		sqlSessionTemplate.insert("board.add", board);
@@ -39,5 +49,30 @@ public class BoardDaoMybatis implements BoardDao{
 		
 	}
 
+	@Override
+	public void insertBoard(Map<String, Object> map) {
+		sqlSessionTemplate.insert("board.insertBoard", map);
+		
+	}
+
+	@Override
+	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) {
+		printQueryId("board.selectBoardList");
+		return sqlSessionTemplate.selectList("board.selectBoardList", map);
+	}
+
+	@Override
+	public void updateHitCnt(Map<String, Object> map) {
+		sqlSessionTemplate.update("board.updateHitCnt", map);
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<String, Object> selectBoardDetail(Map<String, Object> map) {
+	return (Map<String, Object>) sqlSessionTemplate.selectOne("board.selectBoardDetail", map);
+	}
+	
+	
 	
 }

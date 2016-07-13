@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="board">
 
-	<select id="list" resultType="board">
+	<select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
 		SELECT
 			idx,
 			title,
@@ -17,6 +17,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			del_gb='N'
 		ORDER BY IDX DESC
 	</select>
+	
+	<insert id="insertBoard" parameterType="hashmap">
+		INSERT INTO BOARD
+		(
+			TITLE,
+			CONTENTS,
+			HIT_CNT,
+			REG_ID
+		)
+		VALUES
+		(
+			#{TITLE},
+			#{CONTENTS},
+			0,
+			'ADMIN'
+		)
+	</insert>
+	
+	<update id="updateHitCnt" parameterType="hashmap">
+		UPDATE BOARD
+		SET
+			HIT_CNT =  COALESCE(HIT_CNT,0) + 1
+		WHERE
+			IDX = ${IDX}
+	</update>
+	
+	<select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			IDX,
+			HIT_CNT,
+			REG_DTM,
+			REG_ID,
+			TITLE,
+			CONTENTS
+		FROM
+			BOARD
+		WHERE
+			IDX = ${IDX}
+	</select>
+	
 <!--  
 	<insert id="add" parameterType="board">
 		insert into board (num, title, id, password, register, recom, hit, content) 

@@ -1,6 +1,8 @@
 package com.spring.board;
 
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.validation.Valid;
@@ -72,7 +74,7 @@ public class BoardController {
 		status.setComplete();
 		return "redirect:/board/list";
 	}
-	
+////////////////////////////////////// MAP 학습용 /////////////////////////////////////////	
 	@RequestMapping(value="/test")
 	public ModelAndView testMapArgumentResolver(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("");
@@ -93,5 +95,35 @@ public class BoardController {
 	     
 	    return mv;
 	}
+	@RequestMapping(value="/insertBoard")
+	public ModelAndView insertBoard(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:/board/openBoardList");
+		
+		boardService.insertBoard(commandMap.getMap());
+		return mv;
+	}
 	
+   @RequestMapping(value="/openBoardList")
+    public ModelAndView openSampleBoardList(CommandMap commandMap) throws Exception{
+        ModelAndView mv = new ModelAndView("/board/list");
+         
+        List<Map<String,Object>> list = boardService.selectBoardList(commandMap.getMap());
+        mv.addObject("list", list);
+         
+        return mv;
+    }
+   
+   @RequestMapping(value="/openBoardDetail")
+   public ModelAndView openBoardDetail(CommandMap commandMap) throws Exception{
+       ModelAndView mv = new ModelAndView("/board/detail");
+        
+       Map<String,Object> map = boardService.selectBoardDetail(commandMap.getMap());
+       if(log.isDebugEnabled()){
+    	   log.debug("map parameter    :    "+map);
+       }
+       mv.addObject("map", map);
+        
+       return mv;
+   }
+	   
 }

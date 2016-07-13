@@ -32,8 +32,29 @@
     <%@ include file="/WEB-INF/include/include-body.jspf" %>
     <script type="text/javascript">
         $(document).ready(function(){
-                     
+        	$("#list").on("click", function(e){
+        		e.preventDefault();
+        		fn_openBoardList();
+        	});
+        	
+        	$("#write").on("click", function(e){
+        		e.preventDefault();
+        		fn_insertBoard();
+        	})
         });
+        
+        function fn_openBoardList(){
+        	var comSubmit = new ComSubmit();
+        	comSubmit.setUrl("<c:url value='/board/openBoardList'/>");
+        	comSubmit.submit();
+        }
+        
+        function fn_insertBoard(){
+        	var comSubmit = new ComSubmit('frm');
+        	comSubmit.setUrl("<c:url value='/board/insertBoard'/>");
+        	comSubmit.submit();
+        }
+        
     </script>
 </body>
 </html>

@@ -3,11 +3,13 @@ package com.spring.board;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.spring.common.CommandMap;
 import com.spring.domain.Board;
 
 @Service
@@ -51,4 +53,25 @@ public class BoardServiceImpl implements BoardService{
 		return now;
 		
 	}
+
+	@Override
+	public void insertBoard(Map<String, Object> map) throws Exception {
+		dao.insertBoard(map);
+		
+	}
+
+	@Override
+	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception {
+		
+		return dao.selectBoardList(map);	
+	}
+
+	@Override
+	public Map<String, Object> selectBoardDetail(Map<String, Object> map) throws Exception {
+		dao.updateHitCnt(map);
+		Map<String, Object> resultMap = dao.selectBoardDetail(map);
+		return resultMap;
+	}
+
+	
 }
