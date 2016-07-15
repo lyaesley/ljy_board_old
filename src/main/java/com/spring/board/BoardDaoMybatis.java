@@ -57,7 +57,6 @@ public class BoardDaoMybatis implements BoardDao{
 
 	@Override
 	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) {
-		printQueryId("board.selectBoardList");
 		return sqlSessionTemplate.selectList("board.selectBoardList", map);
 	}
 
@@ -71,6 +70,29 @@ public class BoardDaoMybatis implements BoardDao{
 	@Override
 	public Map<String, Object> selectBoardDetail(Map<String, Object> map) {
 	return (Map<String, Object>) sqlSessionTemplate.selectOne("board.selectBoardDetail", map);
+	}
+
+	@Override
+	public void updateBoard(Map<String, Object> map) {
+		sqlSessionTemplate.update("board.updateBoard",map);
+		
+	}
+
+	@Override
+	public void deleteBoard(Map<String, Object> map) {
+		sqlSessionTemplate.delete("board.deleteBoard", map);
+		
+	}
+
+	@Override
+	public void insertFile(Map<String, Object> map) {
+		sqlSessionTemplate.insert("board.insertFile", map);
+		
+	}
+
+	@Override
+	public List<Map<String, Object>> selectFileList(Map<String, Object> map) {
+		return sqlSessionTemplate.selectList("board.selectFileList",map);
 	}
 	
 	

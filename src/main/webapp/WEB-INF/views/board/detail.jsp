@@ -33,6 +33,23 @@
             <tr>
                 <td colspan="4">${map.contents }</td>
             </tr>
+            <tr>
+            	<th scope="row">첨부파일</th>
+            	<td colspan="3">
+            		<c:choose>
+            			<c:when test="${fn:length(list) > 0 }">
+		            		<c:forEach items="${list }" var="row">
+		            			<input type="hidden" id="IDX" value="${row.idx }"/>
+		            			<a href="#this" id="file">${row.original_file_name }</a>
+		            			(${row.file_size }KB)
+		            		</c:forEach>
+            			</c:when>
+            			<c:otherwise>
+							첨부 파일이 없습니다.
+            			</c:otherwise>
+            		</c:choose>
+            	</td>
+            </tr>
         </tbody>
     </table>
      
@@ -47,9 +64,13 @@
                 fn_openBoardList();
             });
              
-            $("#update").on("click", function(e){
+            $("#update").on("click", function(e){ //수정하기 버튼
                 e.preventDefault();
                 fn_openBoardUpdate();
+            });
+            $("a[id='file']").on("click", function(e){
+            	e.preventDefault();
+            	fn_downloadFile($(this));
             });
         });
          
@@ -63,6 +84,14 @@
             var idx = "${map.idx}";
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/board/openBoardUpdate' />");
+            comSubmit.addParam("IDX", idx);
+            comSubmit.submit();
+        }
+        
+        function fn_downloadFile(obj){
+        	var idx = obj.parent().find("#IDX").val();
+        	var comSubmit = new ComSubmit();
+        	comSubmit.setUrl("<c:url value='/common/downloadFile' />");
             comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }

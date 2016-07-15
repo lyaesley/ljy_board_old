@@ -25,5 +25,13 @@ public interface BoardDao {
 
 	Map<String, Object> selectBoardDetail(Map<String, Object> map);
 
+	void updateBoard(Map<String, Object> map);
+
+	void deleteBoard(Map<String, Object> map);
+
+	void insertFile(Map<String, Object> map);
+
+	List<Map<String, Object>> selectFileList(Map<String, Object> map);
+
 	
 }

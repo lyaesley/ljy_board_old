@@ -39,3 +39,15 @@ VALUES
 );
 
 ---------------------------------------------------------------------------------------
+--------------------------------File 정보 테이블-------------------------------------------
+CREATE TABLE TB_FILE
+(
+  IDX   serial,
+  BOARD_IDX numeric NOT NULL,
+  ORIGINAL_FILE_NAME character varying(260) NOT NULL,
+  STORED_FILE_NAME character varying(36) NOT NULL,
+  FILE_SIZE numeric,
+  REG_DTM  text NOT NULL DEFAULT to_char(now(), 'yyyy-mm-dd HH24:MI:SS'::text), 
+  REG_ID   character varying(30) NOT NULL,
+  DEL_GB    character varying(1) DEFAULT 'N' NOT NULL
+);

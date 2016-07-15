@@ -9,6 +9,7 @@
 		<param-value>
 		classpath:/spring/root-context.xml
 		classpath:/mybatis/mybatis-context.xml
+		classpath:/spring/common-context.xml
 		</param-value>	
 	</context-param>
 	
