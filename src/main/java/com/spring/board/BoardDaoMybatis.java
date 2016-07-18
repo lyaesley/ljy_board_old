@@ -94,6 +94,18 @@ public class BoardDaoMybatis implements BoardDao{
 	public List<Map<String, Object>> selectFileList(Map<String, Object> map) {
 		return sqlSessionTemplate.selectList("board.selectFileList",map);
 	}
+
+	@Override
+	public void deleteFileList(Map<String, Object> map) {
+		sqlSessionTemplate.update("deleteFileList", map);
+		
+	}
+	
+	@Override
+	public void updateFile(Map<String, Object> map) {
+		sqlSessionTemplate.update("updateFile", map);
+		
+	}
 	
 	
 	

@@ -39,9 +39,11 @@
             		<c:choose>
             			<c:when test="${fn:length(list) > 0 }">
 		            		<c:forEach items="${list }" var="row">
+		            			<p>
 		            			<input type="hidden" id="IDX" value="${row.idx }"/>
 		            			<a href="#this" id="file">${row.original_file_name }</a>
 		            			(${row.file_size }KB)
+		            			</p>
 		            		</c:forEach>
             			</c:when>
             			<c:otherwise>
@@ -92,7 +94,11 @@
         	var idx = obj.parent().find("#IDX").val();
         	var comSubmit = new ComSubmit();
         	comSubmit.setUrl("<c:url value='/common/downloadFile' />");
-            comSubmit.addParam("IDX", idx);
+            
+        	/* if(gfn_isNull($("[name='IDX']").val())==false){
+        		$("[name='IDX']").remove();
+        	} */
+        	comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }
     </script>

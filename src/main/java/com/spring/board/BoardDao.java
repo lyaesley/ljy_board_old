@@ -33,5 +33,7 @@ public interface BoardDao {
 
 	List<Map<String, Object>> selectFileList(Map<String, Object> map);
 
-	
+	void deleteFileList(Map<String, Object> map);
+
+	void updateFile(Map<String, Object> map);
 }

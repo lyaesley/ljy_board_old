@@ -141,22 +141,27 @@ public class BoardController {
 
 		Map<String, Object> map = boardService.selectBoardDetail(commandMap.getMap());
 
-		mv.addObject("map", map);
-
-		return mv;
+		mv.addObject("map", map.get("map"));
+		mv.addObject("list", map.get("list"));
+		
+		return mv;	
 	}
 
 	@RequestMapping(value = "/updateBoard")
-	public ModelAndView updateBoard(CommandMap commandMap) throws Exception {
+	public ModelAndView updateBoard(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/board/openBoardDetail");
 
 		if (log.isDebugEnabled()) {
-			log.debug("map parameter    :    " + commandMap.getMap());
+			log.debug("updateBoard map parameter1    :    " + commandMap.getMap());
 		}
-		boardService.updateBoard(commandMap.getMap());
+		boardService.updateBoard(commandMap.getMap(), request);
 
 		mv.addObject("IDX", commandMap.get("IDX"));
-
+		
+		if (log.isDebugEnabled()) {
+			log.debug("updateBoard map parameter2    :    " + commandMap.getMap());
+		}
+		
 		return mv;
 	}
 
